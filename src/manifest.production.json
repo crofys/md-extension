@@ -1,0 +1,33 @@
+{
+    "manifest_version": 2,
+    "name": "html-to-md-extension",
+    "description": "chrome extension",
+    "version": "0.0.1",
+    "options_page": "options.html",
+    "browser_action": {
+      "default_popup": "popup.html"
+    },
+    "background": {
+      "scripts": ["js/background.js"],
+      "persistent": false
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["js/jquery.js", "js/content.js"],
+        "run_at": "document_start"
+      }
+    ],
+    "permissions": [
+      "contextMenus",
+      "tabs",
+      "notifications",
+      "downloads",
+      "webRequestBlocking",
+      "storage",
+      "http://*/*",
+      "https://*/*"
+    ],
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+  }
+  
